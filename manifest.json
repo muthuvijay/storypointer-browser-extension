@@ -1,0 +1,33 @@
+{
+  "name": "StoryPointer",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Pointer is a simple extension that allows users to point stories collboratively",
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["globals.js", "app.js"],
+      "matches": ["*://*/*"]
+    }
+  ],
+  "permissions": ["activeTab", "scripting", "contextMenus"],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "*://*/*",
+    "http://localhost:3000/*",
+    "https://node-socket-storypointer-bd1078ee47cf.herokuapp.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' http://localhost:3000; object-src 'self'"
+  }
+}
